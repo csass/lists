@@ -64,7 +64,12 @@ public class MyArrayList<E> {
 	 * @param elem
 	 */
 	public void add(E elem) {
-	}
+        elements[currentSize] = elem;
+        currentSize++;
+        if (elements.length == currentSize) {
+            expandSize();
+        }
+    }
 
 	/**
 	 * Adds a new element to the end of the array:
@@ -88,7 +93,11 @@ public class MyArrayList<E> {
 	 * This will be useful for both versions of add.
 	 */
 	private void expandSize() {
-		
+        E[] elements2 = newArrayOfE(currentSize*2);
+        for (int i = 0; i < currentSize; i++) {
+            elements2[i] = elements[i];
+        }
+        elements = elements2;
 	}
 	
 	/**
